@@ -1,22 +1,21 @@
 import java.util.Scanner;
 
-interface Gradeable{
-    void CalculateFinalGrade();
+interface Gradable {
+    void calculateFinalScore();
     void determineGrade();
-    double getGrade();
+    double getFinalScore();
     String getLetterGrade();
-    String getName();
     String getStatus();
 }
 
-class Course implements Gradeable {
+class Subject implements Gradable {
     private String name;
     private double uts, uas, tugas;
     private double finalScore;
     private String letterGrade;
     private String status;
 
-    public Course(String name) {
+    public Subject(String name) {
         this.name = name;
     }
 
@@ -31,7 +30,7 @@ class Course implements Gradeable {
     }
 
     @Override
-    public void CalculateFinalGrade() {
+    public void calculateFinalScore() {
         finalScore = (0.3 * uts) + (0.4 * uas) + (0.3 * tugas);
         determineGrade();
     }
@@ -58,7 +57,7 @@ class Course implements Gradeable {
     }
 
     @Override
-    public double getGrade() {
+    public double getFinalScore() {
         return finalScore;
     }
 
@@ -78,9 +77,32 @@ class Course implements Gradeable {
     }
 }
 
+class UndegraduateStudent{
+    private String name;
+    private String nim;
+    private Subject subject1;
+    private Subject subject2;
+
+     public void inputData(Scanner input) {
+        System.out.println("-----    INPUT DATA MAHASISWA -----");
+        System.out.print("Nama  : ");
+        input.nextLine(); 
+        name = input.nextLine();
+        System.out.print("NIM   : ");
+        nim = input.nextLine();
+
+        subject1 = new Subject("Algoritma dan Pemrograman");
+        subject1.inputData(input);
+        subject1.calculateFinalScore();
+
+        subject2 = new Subject("Struktur Data");
+        subject2.inputData(input);
+        subject2.calculateFinalScore();
+    }
+}
 
 public class MidTest {
     public static void main(String[] args) {
-        System.out.println("===== Program Penghitung Nilai Akhir Mahasiswa =====");
+        System.out.println("");
     }
 }
