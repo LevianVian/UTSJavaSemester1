@@ -122,13 +122,18 @@ class UndegraduateStudent{
         } else {
             semesterStatus = "TIDAK LULUS";
         }
+        System.out.printf("Rata-rata Nilai Akhir: ", avg);
+        System.out.println("Status Semester: " + semesterStatus);
     }
 
 }
 
 public class MidTest {
     public static void main(String[] args) {
-        System.out.println("");
+        Scanner input = new Scanner(System.in);
+        UndegraduateStudent student = new UndegraduateStudent();
+        student.inputData(input);
+        student.displayResults();
+        input.close();
     }
-}
 }
