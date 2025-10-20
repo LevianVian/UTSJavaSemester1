@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-interface Gradable {
+interface Gradeable {
     void calculateFinalScore();
     void determineGrade();
     double getFinalScore();
@@ -8,7 +8,7 @@ interface Gradable {
     String getStatus();
 }
 
-class Subject implements Gradable {
+class Subject implements Gredable {
     private String name;
     private double uts, uas, tugas;
     private double finalScore;
@@ -98,11 +98,30 @@ class UndegraduateStudent{
         subject2 = new Subject("Struktur Data");
         subject2.inputData(input);
         subject2.calculateFinalScore();
+     }
+
+        public void displayResults() {
+        System.out.println("\n------    HASIL PENILIAIAN MAHASISWA ------");
+        System.out.println("Nama  : " + name);
+        System.out.println("NIM   : " + nim);
+        System.out.println();
+        System.out.printf("%-25s %-10s %-10s %-10s %-10s %-10s %-10s%n",
+                "Mata Kuliah", "UTS", "UAS", "Tugas", "Akhir", "Grade", "Status");
+        subject1.displayCourse();
+        subject2.displayCourse();
+
+        double avg = (subject1.getFinalScore() + subject2.getFinalScore()) / 2;
+        String semesterStatus;
+
+         if (subject1.getStatus().equals("LULUS") && subject2.getStatus().equals("LULUS")) {
+        
     }
+
 }
 
 public class MidTest {
     public static void main(String[] args) {
         System.out.println("");
     }
+}
 }
