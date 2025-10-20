@@ -9,7 +9,7 @@ interface Gradeable {
 }
 
 class Subject implements Gradeable {
-    private String name;
+    private final String name;
     private double uts, uas, tugas;
     private double finalScore;
     private String letterGrade;
@@ -20,7 +20,7 @@ class Subject implements Gradeable {
     }
 
     public void inputData(Scanner input) {
-        System.out.println("---- Mata Kuliah: " + name + " ----");
+        System.out.println("---- Mata Kuliah: " + " ----");
         System.out.print("Nilai UTS: ");
         uts = input.nextDouble();
         System.out.print("Nilai UAS: ");
@@ -86,7 +86,6 @@ class UndegraduateStudent{
      public void inputData(Scanner input) {
         System.out.println("-----    INPUT DATA MAHASISWA -----");
         System.out.print("Nama  : ");
-        input.nextLine(); 
         name = input.nextLine();
         System.out.print("NIM   : ");
         nim = input.nextLine();
@@ -102,7 +101,7 @@ class UndegraduateStudent{
 
         public void displayResults() {
         System.out.println("\n------    HASIL PENILIAIAN MAHASISWA ------");
-        System.out.println("Nama  : " + name);
+        System.out.println("Nama  : " );
         System.out.println("NIM   : " + nim);
         System.out.println();
         System.out.printf("%-25s %-10s %-10s %-10s %-10s %-10s %-10s%n",
