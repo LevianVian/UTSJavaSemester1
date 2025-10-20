@@ -114,7 +114,14 @@ class UndegraduateStudent{
         String semesterStatus;
 
          if (subject1.getStatus().equals("LULUS") && subject2.getStatus().equals("LULUS")) {
-        
+            if (avg >= 70) {
+                semesterStatus = "LULUS";
+            } else {
+                semesterStatus = "TIDAK LULUS";
+            }
+        } else {
+            semesterStatus = "TIDAK LULUS";
+        }
     }
 
 }
