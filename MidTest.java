@@ -8,7 +8,7 @@ interface Gradeable {
     String getStatus();
 }
 
-class Subject implements Gredable {
+class Subject implements Gradeable {
     private String name;
     private double uts, uas, tugas;
     private double finalScore;
