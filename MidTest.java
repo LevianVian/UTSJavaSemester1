@@ -1,6 +1,6 @@
-import java.util.Scanner;
+import java.util.Scanner; //import java libraries
 
-interface Gradeable {
+interface Gradeable { //bikin interface Gradeable
     void calculateFinalScore();
     void determineGrade();
     double getFinalScore();
@@ -8,6 +8,8 @@ interface Gradeable {
     String getStatus();
 }
 
+
+//class Subject yakni berisi mata kuliah yang mengimplementasi interface Gradeable
 class Subject implements Gradeable {
     private final String name;
     private double uts, uas, tugas;
@@ -15,10 +17,12 @@ class Subject implements Gradeable {
     private String letterGrade;
     private String status;
 
+    //String name untuk nama mata kuliah dan nantinya dipakai ke nama Mahasiswa
     public Subject(String name) {
         this.name = name;
     }
 
+    //method inputData untuk memasukkan nilai UTS, UAS, dan Tugas
     public void inputData(Scanner input) {
         System.out.println("---- Mata Kuliah: " + " ----");
         System.out.print("Nilai UTS: ");
@@ -29,12 +33,17 @@ class Subject implements Gradeable {
         tugas = input.nextDouble();
     }
 
+    //method calculateFinalScore untuk menghitung nilai akhir
+    //override berfungsi untuk mengimplementasi method dari interface Gradeable
     @Override
     public void calculateFinalScore() {
         finalScore = (0.3 * uts) + (0.4 * uas) + (0.3 * tugas);
         determineGrade();
     }
 
+
+    //method determineGrade untuk menentukan grade dan status kelulusan
+    //override berfungsi untuk mengimplementasi method dari interface Gradeable
     @Override
     public void determineGrade() {
         if (finalScore >= 80 && finalScore <= 100) {
@@ -56,6 +65,8 @@ class Subject implements Gradeable {
         status = (finalScore >= 60) ? "LULUS" : "TIDAK LULUS";
     }
 
+    
+    //getfinalscore, getlettergrade, getstatus untuk mengambil nilai finalScore, letterGrade, dan status
     @Override
     public double getFinalScore() {
         return finalScore;
@@ -77,13 +88,17 @@ class Subject implements Gradeable {
     }
 }
 
+
+//class UndergraduateStudent untuk menyimpan data mahasiswaq
 class UndegraduateStudent{
     private String name;
     private String nim;
     private Subject subject1;
     private Subject subject2;
+    
 
-     public void inputData(Scanner input) {
+    //method inputData untuk memasukkan data mahasiswa dan mata kuliah
+    public void inputData(Scanner input) {
         System.out.println("-----    INPUT DATA MAHASISWA -----");
         System.out.print("Nama  : ");
         name = input.nextLine();
@@ -98,7 +113,7 @@ class UndegraduateStudent{
         subject2.inputData(input);
         subject2.calculateFinalScore();
      }
-
+        //method displayResults untuk menampilkan hasil penilaian mahasiswa
         public void displayResults() {
         System.out.println("\n------    HASIL PENILIAIAN MAHASISWA ------");
         System.out.println("Nama  : " );
@@ -112,6 +127,7 @@ class UndegraduateStudent{
         double avg = (subject1.getFinalScore() + subject2.getFinalScore()) / 2;
         String semesterStatus;
 
+         //menentukan status kelulusan semester
          if (subject1.getStatus().equals("LULUS") && subject2.getStatus().equals("LULUS")) {
             if (avg >= 70) {
                 semesterStatus = "LULUS";
