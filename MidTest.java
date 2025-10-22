@@ -113,7 +113,7 @@ class UndegraduateStudent{
         subject2.inputData(input);
         subject2.calculateFinalScore();
      }
-        //method displayResults untuk menampilkan hasil penilaian mahasiswa
+        //method displayResults untuk menampilkan hasil penilaian mahasiswa 
         public void displayResults() {
         System.out.println("\n------    HASIL PENILIAIAN MAHASISWA ------");
         System.out.println("Nama  : " );
