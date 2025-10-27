@@ -11,7 +11,7 @@ interface Gradeable { //bikin interface Gradeable
 
 //class Subject yakni berisi mata kuliah yang mengimplementasi interface Gradeable
 class Subject implements Gradeable {
-    private final String name;
+    private String name;
     private double uts, uas, tugas;
     private double finalScore;
     private String letterGrade;
@@ -24,7 +24,7 @@ class Subject implements Gradeable {
 
     //method inputData untuk memasukkan nilai UTS, UAS, dan Tugas
     public void inputData(Scanner input) {
-        System.out.println("---- Mata Kuliah: " + " ----");
+        System.out.println("---- Mata Kuliah: " + name + " ----");
         System.out.print("Nilai UTS: ");
         uts = input.nextDouble();
         System.out.print("Nilai UAS: ");
@@ -95,11 +95,13 @@ class UndegraduateStudent{
     private String nim;
     private Subject subject1;
     private Subject subject2;
+    private Subject subject3;
     
 
     //method inputData untuk memasukkan data mahasiswa dan mata kuliah
     public void inputData(Scanner input) {
         System.out.println("-----    INPUT DATA MAHASISWA -----");
+        input.nextLine();
         System.out.print("Nama  : ");
         name = input.nextLine();
         System.out.print("NIM   : ");
@@ -112,23 +114,28 @@ class UndegraduateStudent{
         subject2 = new Subject("Struktur Data");
         subject2.inputData(input);
         subject2.calculateFinalScore();
+
+        subject3 = new Subject("Jaringan Komputer");
+        subject3.inputData(input);
+        subject3.calculateFinalScore();
      }
         //method displayResults untuk menampilkan hasil penilaian mahasiswa 
         public void displayResults() {
         System.out.println("\n------    HASIL PENILIAIAN MAHASISWA ------");
-        System.out.println("Nama  : " );
+        System.out.println("Nama  : " + name);
         System.out.println("NIM   : " + nim);
         System.out.println();
         System.out.printf("%-25s %-10s %-10s %-10s %-10s %-10s %-10s%n",
                 "Mata Kuliah", "UTS", "UAS", "Tugas", "Akhir", "Grade", "Status");
         subject1.displayCourse();
         subject2.displayCourse();
+        subject3.displayCourse();
 
-        double avg = (subject1.getFinalScore() + subject2.getFinalScore()) / 2;
+        double avg = (subject1.getFinalScore() + subject2.getFinalScore() + subject3.getFinalScore()) / 3;
         String semesterStatus;
 
          //menentukan status kelulusan semester
-         if (subject1.getStatus().equals("LULUS") && subject2.getStatus().equals("LULUS")) {
+         if (subject1.getStatus().equals("LULUS") && subject2.getStatus().equals("LULUS") && subject3.getStatus().equals("LULUS")) {
             if (avg >= 70) {
                 semesterStatus = "LULUS";
             } else {
@@ -137,7 +144,7 @@ class UndegraduateStudent{
         } else {
             semesterStatus = "TIDAK LULUS";
         }
-        System.out.printf("Rata-rata Nilai Akhir: ", avg);
+        System.out.printf("Rata-rata Nilai Akhir: %.2f%n", avg);
         System.out.println("Status Semester: " + semesterStatus);
     }
 
